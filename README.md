@@ -1,4 +1,8 @@
-# @pocketschool/nestjs-file-uploader
+# @habibulhasan/nestjs-file-uploader
+
+[![npm version](https://badge.fury.io/js/@habibulhasan%2Fnestjs-file-uploader.svg)](https://www.npmjs.com/package/@habibulhasan/nestjs-file-uploader)
+[![Downloads](https://img.shields.io/npm/dm/@habibulhasan/nestjs-file-uploader.svg)](https://www.npmjs.com/package/@habibulhasan/nestjs-file-uploader)
+[![License](https://img.shields.io/npm/l/@habibulhasan/nestjs-file-uploader.svg)](https://github.com/HabibulHH/fileuploader/blob/main/LICENSE)
 
 A comprehensive, production-ready file upload module for NestJS with support for multiple storage providers using the Strategy Pattern.
 
@@ -43,7 +47,7 @@ A comprehensive, production-ready file upload module for NestJS with support for
 ## Installation
 
 ```bash
-npm install @pocketschool/nestjs-file-uploader
+npm install @habibulhasan/nestjs-file-uploader
 ```
 
 ### Peer Dependencies
@@ -59,8 +63,8 @@ npm install @nestjs/common @nestjs/core @nestjs/platform-express @nestjs/typeorm
 ```typescript
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FileUploadModule } from '@pocketschool/nestjs-file-uploader';
-import { StorageType } from '@pocketschool/nestjs-file-uploader';
+import { FileUploadModule } from '@habibulhasan/nestjs-file-uploader';
+import { StorageType } from '@habibulhasan/nestjs-file-uploader';
 
 @Module({
   imports: [
@@ -221,7 +225,7 @@ FileUploadModule.forRootAsync({
 ```typescript
 import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { FileService, FileUploadDto, StorageType } from '@pocketschool/nestjs-file-uploader';
+import { FileService, FileUploadDto, StorageType } from '@habibulhasan/nestjs-file-uploader';
 
 @Controller('upload')
 export class UploadController {
@@ -278,7 +282,7 @@ const url = await this.fileService.getSignedUrl('file-id', 3600); // expires in 
 ### Working with Folders
 
 ```typescript
-import { FolderService } from '@pocketschool/nestjs-file-uploader';
+import { FolderService } from '@habibulhasan/nestjs-file-uploader';
 
 // Create folder
 const folder = await this.folderService.create({
@@ -356,7 +360,7 @@ await this.folderService.move(folderId, {
 ### Custom Storage Strategy
 
 ```typescript
-import { IStorageStrategy } from '@pocketschool/nestjs-file-uploader';
+import { IStorageStrategy } from '@habibulhasan/nestjs-file-uploader';
 
 class MyCustomStorageStrategy implements IStorageStrategy {
   async upload(file, filename, options) {
