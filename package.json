@@ -1,0 +1,97 @@
+{
+  "name": "@pocketschool/nestjs-file-uploader",
+  "version": "0.1.0",
+  "description": "A comprehensive file upload module for NestJS with support for multiple storage providers (AWS S3, Digital Ocean Spaces, Local Storage) using Strategy Pattern",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "nestjs",
+    "file-upload",
+    "file-manager",
+    "aws-s3",
+    "digital-ocean",
+    "storage",
+    "strategy-pattern",
+    "multer",
+    "cloud-storage",
+    "file-storage",
+    "typeorm"
+  ],
+  "author": "PocketSchool",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/lms-engine.git",
+    "directory": "packages/nestjs-file-uploader"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/lms-engine/issues"
+  },
+  "homepage": "https://github.com/yourusername/lms-engine/tree/main/packages/nestjs-file-uploader#readme",
+  "peerDependencies": {
+    "@nestjs/common": "^10.0.0 || ^11.0.0",
+    "@nestjs/core": "^10.0.0 || ^11.0.0",
+    "@nestjs/platform-express": "^10.0.0 || ^11.0.0",
+    "@nestjs/typeorm": "^10.0.0 || ^11.0.0",
+    "reflect-metadata": "^0.1.13 || ^0.2.0",
+    "rxjs": "^7.0.0",
+    "typeorm": "^0.3.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.699.0",
+    "@aws-sdk/s3-request-presigner": "^3.699.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "mime-types": "^2.1.35",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/testing": "^11.0.1",
+    "@nestjs/typeorm": "^11.0.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/mime-types": "^2.1.4",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^22.10.7",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "jest": "^30.0.0",
+    "prettier": "^3.4.2",
+    "reflect-metadata": "^0.2.2",
+    "rimraf": "^6.0.1",
+    "rxjs": "^7.8.1",
+    "ts-jest": "^29.2.5",
+    "typeorm": "^0.3.27",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
