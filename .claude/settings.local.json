@@ -4,7 +4,8 @@
       "Bash(npm run build:*)",
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nfix: Resolve all TypeScript compilation errors\n\n- Install @nestjs/swagger and @types/multer dependencies\n- Add multer types to tsconfig.json\n- Fix module configuration undefined issues in file-upload.module.ts\n- Fix strict null checks in migrations and services\n- Update AWS S3 ACL types to use ObjectCannedACL enum\n- Fix class inheritance issues (logger and config properties)\n- Update Swagger ApiProperty decorators with additionalProperties\n- Fix nullable types in Folder entity (parent, parentId)\n- Resolve method name conflicts in DigitalOcean strategy\n\nAll 44 TypeScript errors resolved. Package now builds successfully.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(npm pack:*)"
+      "Bash(npm pack:*)",
+      "Bash(npm view:*)"
     ],
     "deny": [],
     "ask": []
