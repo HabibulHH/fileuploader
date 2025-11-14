@@ -1,6 +1,6 @@
 {
   "name": "@habibulhasan/nestjs-file-uploader",
-  "version": "0.1.3",
+  "version": "0.1.7",
   "description": "A comprehensive file upload module for NestJS with support for multiple storage providers (AWS S3, Digital Ocean Spaces, Local Storage) using Strategy Pattern",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "npm run clean && tsc",
+    "build": "tsc",
+    "build:clean": "npm run clean && tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf dist",
     "test": "jest",
@@ -19,7 +20,7 @@
     "test:cov": "jest --coverage",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
-    "prepublishOnly": "rimraf dist && tsc"
+    "prepack": "npm run build"
   },
   "keywords": [
     "nestjs",
