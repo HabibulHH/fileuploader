@@ -1,5 +1,5 @@
 {
-  "name": "@pocketschool/nestjs-file-uploader",
+  "name": "@habibulhasan/nestjs-file-uploader",
   "version": "0.1.0",
   "description": "A comprehensive file upload module for NestJS with support for multiple storage providers (AWS S3, Digital Ocean Spaces, Local Storage) using Strategy Pattern",
   "main": "dist/index.js",
