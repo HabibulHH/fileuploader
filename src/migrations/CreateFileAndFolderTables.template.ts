@@ -306,19 +306,23 @@ export class CreateFileAndFolderTables1700000000000 implements MigrationInterfac
 
     // Drop foreign keys
     const filesTable = await queryRunner.getTable('files');
-    const filesFolderFk = filesTable.foreignKeys.find(
-      (fk) => fk.columnNames.indexOf('folderId') !== -1,
-    );
-    if (filesFolderFk) {
-      await queryRunner.dropForeignKey('files', filesFolderFk);
+    if (filesTable) {
+      const filesFolderFk = filesTable.foreignKeys.find(
+        (fk) => fk.columnNames.indexOf('folderId') !== -1,
+      );
+      if (filesFolderFk) {
+        await queryRunner.dropForeignKey('files', filesFolderFk);
+      }
     }
 
     const foldersTable = await queryRunner.getTable('folders');
-    const foldersParentFk = foldersTable.foreignKeys.find(
-      (fk) => fk.columnNames.indexOf('parentId') !== -1,
-    );
-    if (foldersParentFk) {
-      await queryRunner.dropForeignKey('folders', foldersParentFk);
+    if (foldersTable) {
+      const foldersParentFk = foldersTable.foreignKeys.find(
+        (fk) => fk.columnNames.indexOf('parentId') !== -1,
+      );
+      if (foldersParentFk) {
+        await queryRunner.dropForeignKey('folders', foldersParentFk);
+      }
     }
 
     // Drop indexes

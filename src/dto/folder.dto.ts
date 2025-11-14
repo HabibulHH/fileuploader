@@ -21,7 +21,11 @@ export class CreateFolderDto {
   @IsBoolean()
   isPublic?: boolean;
 
-  @ApiPropertyOptional({ description: 'Additional metadata as JSON', type: 'object' })
+  @ApiPropertyOptional({
+    description: 'Additional metadata as JSON',
+    type: 'object',
+    additionalProperties: true
+  })
   @IsOptional()
   @IsObject()
   metadata?: Record<string, any>;
@@ -48,7 +52,11 @@ export class UpdateFolderDto {
   @IsBoolean()
   isPublic?: boolean;
 
-  @ApiPropertyOptional({ description: 'Additional metadata as JSON', type: 'object' })
+  @ApiPropertyOptional({
+    description: 'Additional metadata as JSON',
+    type: 'object',
+    additionalProperties: true
+  })
   @IsOptional()
   @IsObject()
   metadata?: Record<string, any>;

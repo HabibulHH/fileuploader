@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { ObjectCannedACL } from '@aws-sdk/client-s3';
 import { AWSS3Strategy } from './aws-s3.strategy';
 
 export interface DigitalOceanSpacesConfig {
@@ -6,13 +7,12 @@ export interface DigitalOceanSpacesConfig {
   accessKeyId: string;
   secretAccessKey: string;
   bucket: string; // Space name
-  acl?: string;
+  acl?: ObjectCannedACL;
   cdnEndpoint?: string; // Optional CDN endpoint
 }
 
 @Injectable()
 export class DigitalOceanStrategy extends AWSS3Strategy {
-  private readonly logger = new Logger(DigitalOceanStrategy.name);
   private readonly cdnEndpoint?: string;
 
   constructor(config: DigitalOceanSpacesConfig) {
@@ -34,7 +34,7 @@ export class DigitalOceanStrategy extends AWSS3Strategy {
   /**
    * Override to use CDN endpoint if available
    */
-  private getPublicUrl(key: string): string {
+  private getCdnUrl(key: string): string {
     if (this.cdnEndpoint) {
       return `${this.cdnEndpoint}/${key}`;
     }
@@ -54,7 +54,7 @@ export class DigitalOceanStrategy extends AWSS3Strategy {
 
     // Replace URL with CDN URL if available
     if (this.cdnEndpoint && result.url) {
-      result.url = this.getPublicUrl(filename);
+      result.url = this.getCdnUrl(filename);
     }
 
     return result;
@@ -68,7 +68,7 @@ export class DigitalOceanStrategy extends AWSS3Strategy {
 
     // Replace URL with CDN URL if available
     if (this.cdnEndpoint && result.url) {
-      result.url = this.getPublicUrl(destinationKey);
+      result.url = this.getCdnUrl(destinationKey);
     }
 
     return result;
@@ -82,7 +82,7 @@ export class DigitalOceanStrategy extends AWSS3Strategy {
 
     // Replace URL with CDN URL if available
     if (this.cdnEndpoint && result.url) {
-      result.url = this.getPublicUrl(destinationKey);
+      result.url = this.getCdnUrl(destinationKey);
     }
 
     return result;

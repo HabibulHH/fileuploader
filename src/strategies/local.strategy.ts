@@ -17,11 +17,11 @@ export interface LocalStorageConfig {
 
 @Injectable()
 export class LocalStorageStrategy implements IStorageStrategy {
-  private readonly logger = new Logger(LocalStorageStrategy.name);
+  protected readonly logger = new Logger(LocalStorageStrategy.name);
   private readonly uploadPath: string;
   private readonly baseUrl: string;
 
-  constructor(private readonly config: LocalStorageConfig) {
+  constructor(protected readonly config: LocalStorageConfig) {
     this.uploadPath = config.uploadPath;
     this.baseUrl = config.baseUrl || '';
 

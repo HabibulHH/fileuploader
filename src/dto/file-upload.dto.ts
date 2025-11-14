@@ -38,7 +38,11 @@ export class FileUploadDto {
   @IsEnum(StorageType)
   storageType?: StorageType;
 
-  @ApiPropertyOptional({ description: 'Additional metadata as JSON', type: 'object' })
+  @ApiPropertyOptional({
+    description: 'Additional metadata as JSON',
+    type: 'object',
+    additionalProperties: true
+  })
   @IsOptional()
   @IsObject()
   metadata?: Record<string, any>;

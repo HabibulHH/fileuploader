@@ -7,6 +7,7 @@ import {
   HeadObjectCommand,
   CopyObjectCommand,
   DeleteObjectsCommand,
+  ObjectCannedACL,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import {
@@ -21,20 +22,20 @@ export interface AWSS3Config {
   accessKeyId: string;
   secretAccessKey: string;
   bucket: string;
-  acl?: string;
+  acl?: ObjectCannedACL;
   endpoint?: string;
 }
 
 @Injectable()
 export class AWSS3Strategy implements IStorageStrategy {
-  private readonly logger = new Logger(AWSS3Strategy.name);
+  protected readonly logger = new Logger(AWSS3Strategy.name);
   private readonly s3Client: S3Client;
   private readonly bucket: string;
-  private readonly acl: string;
+  private readonly acl: ObjectCannedACL;
 
-  constructor(private readonly config: AWSS3Config) {
+  constructor(protected readonly config: AWSS3Config) {
     this.bucket = config.bucket;
-    this.acl = config.acl || 'private';
+    this.acl = config.acl || ObjectCannedACL.private;
 
     this.s3Client = new S3Client({
       region: config.region,

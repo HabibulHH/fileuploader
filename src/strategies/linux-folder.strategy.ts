@@ -14,7 +14,6 @@ export interface LinuxFolderConfig {
 
 @Injectable()
 export class LinuxFolderStrategy extends LocalStorageStrategy {
-  private readonly logger = new Logger(LinuxFolderStrategy.name);
   private readonly permissions: string;
   private readonly owner?: { uid: number; gid: number };
 

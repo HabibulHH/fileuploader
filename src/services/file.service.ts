@@ -262,7 +262,9 @@ export class FileService {
       throw new FileAlreadyDeletedException(id);
     }
 
-    file.deletedBy = deletedBy;
+    if (deletedBy) {
+      file.deletedBy = deletedBy;
+    }
     await this.fileRepository.softDelete(id);
 
     this.logger.log(`File soft deleted: ${id}`);

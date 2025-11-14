@@ -32,10 +32,10 @@ export class Folder {
   path: string;
 
   @TreeParent()
-  parent: Folder;
+  parent: Folder | null;
 
   @Column({ type: 'uuid', nullable: true })
-  parentId: string;
+  parentId: string | null;
 
   @TreeChildren()
   children: Folder[];

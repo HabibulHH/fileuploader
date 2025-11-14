@@ -45,7 +45,7 @@ export class FolderService {
       name: dto.name,
       description: dto.description,
       parentId: dto.parentId,
-      parent,
+      parent: parent || undefined,
       isPublic: dto.isPublic ?? true,
       metadata: dto.metadata,
       createdBy: dto.createdBy,
@@ -149,7 +149,7 @@ export class FolderService {
       }
     }
 
-    folder.parentId = dto.targetParentId;
+    folder.parentId = dto.targetParentId || null;
     folder.parent = targetParent;
 
     const movedFolder = await this.folderRepository.save(folder);
@@ -167,7 +167,9 @@ export class FolderService {
   async softDelete(id: string, deletedBy?: string): Promise<Folder> {
     const folder = await this.findById(id);
 
-    folder.deletedBy = deletedBy;
+    if (deletedBy) {
+      folder.deletedBy = deletedBy;
+    }
     await this.folderRepository.softDelete(id);
 
     // Also soft delete all files in this folder

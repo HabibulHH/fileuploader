@@ -78,6 +78,10 @@ export class FileUploadModule {
       return [this.createAsyncOptionsProvider(options)];
     }
 
+    if (!options.useClass) {
+      throw new Error('useClass must be provided when using class-based async configuration');
+    }
+
     return [
       this.createAsyncOptionsProvider(options),
       {
@@ -98,11 +102,16 @@ export class FileUploadModule {
       };
     }
 
+    const injectToken = options.useExisting || options.useClass;
+    if (!injectToken) {
+      throw new Error('useExisting or useClass must be provided for factory-based async configuration');
+    }
+
     return {
       provide: FILE_UPLOAD_MODULE_OPTIONS,
       useFactory: async (optionsFactory: FileUploadModuleOptionsFactory) =>
         await optionsFactory.createFileUploadOptions(),
-      inject: [options.useExisting || options.useClass],
+      inject: [injectToken],
     };
   }
 }

@@ -23,7 +23,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "lib": ["ES2021"],
-    "types": ["node", "jest"]
+    "types": ["node", "jest", "multer"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "tests", "**/*.spec.ts"]
