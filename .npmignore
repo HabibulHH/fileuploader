@@ -1,0 +1,51 @@
+# Source files (only ship compiled dist/)
+src/
+tests/
+*.spec.ts
+*.test.ts
+
+# Development files
+.vscode/
+.idea/
+.claude/
+*.log
+*.lock
+
+# Build artifacts
+tsconfig.json
+tsconfig.build.json
+.eslintrc.js
+.prettierrc
+jest.config.js
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.circleci/
+.travis.yml
+
+# Documentation (keep README.md and LICENSE)
+docs/
+*.md
+!README.md
+
+# Environment
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Misc
+*.swp
+*.swo
+*~
+.DS_Store
